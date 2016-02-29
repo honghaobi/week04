@@ -17,7 +17,35 @@
     </nav>
     <h1>Form Fields: Example 1</h1>
 
-    <form action="" method="get">
+    <form name="myform" action="" method="get">
+      <fieldset>
+        <label for="input1"></label>
+        <input id="input1" type="text" placeholder="input1">
+
+        <label for="input2"></label>
+        <input id="input2" type="text" placeholder="input2">
+
+        <label for="textarea1"></label>
+        <textarea autofocus id="textarea1" name="textarea1" rows="8" cols="40">some tex here yo</textarea>
+
+        <label for="textarea2"></label>
+        <textarea id="textarea2" name="textarea2" rows="8" cols="40"></textarea>
+      </fieldset>
+
+      <label for="email"></label>
+      <input id="email" type="email" name="email" value="">
+
+      <label for="date"></label>
+      <input id="date" type="date" name="date" value="">
+
+      <label for="number"></label>
+      <input id="number" type="number" name="number" value="">
+
+      <label for="file"></label>
+      <input id="file" type="file" name="file" value="">
+
+      <label for="submit"></label>
+      <button type="submit" name="button">submit the form</button>
     </form>
 
     <div class="query-params">
