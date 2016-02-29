@@ -17,7 +17,41 @@
     </nav>
     <h1>Form Fields: Example 4</h1>
 
-    <form action="" method="get">
+    <form action="example_04.html" method="get">
+      <label for="select1">
+        <select name="select1">
+            <option value="value1">Value 1</option>
+            <option value="value2" selected>Value 2</option>
+            <option value="value3">Value 3</option>
+            <option value="value4">Value 4</option>
+        </select>
+      </label>
+      <label for="select2">
+        <select name="select2">
+            <option value="value1">Value 1</option>
+            <option value="value2" selected>Value 2</option>
+            <option value="value3">Value 3</option>
+            <option value="value4">Value 4</option>
+        </select>
+      </label>
+      <label for="select3">
+        <select name="select3">
+            <option value="text1">text1</option>
+            <option value="text2" selected>text2</option>
+            <option value="">text3</option>
+            <option value="">text4</option>
+        </select>
+      </label>
+      <label for="select4">
+        <select name="select4" multiple="multiple" size="4">
+            <option value="multi-1">multi-1</option>
+            <option value="multi-2" selected>multi-2</option>
+            <option value="multi-3">multi-3</option>
+            <option value="multi-4">multi-4</option>
+        </select>
+      </label>
+
+      <button type="submit" name="button">submit the form</button>
     </form>
 
     <div class="query-params">
