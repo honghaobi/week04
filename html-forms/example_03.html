@@ -17,7 +17,34 @@
     </nav>
     <h1>Form Fields: Example 3</h1>
 
-    <form action="" method="get">
+    <form action="example_03.html" method="get">
+      <fieldset>
+        <legend>Size</legend>
+        <label for="radioSize">
+          <input type="radio" name="radioSize" value="small">small
+        </label>
+        <label for="radioSize">
+          <input type="radio" name="radioSize" value="medium">medium
+        </label>
+        <label for="radioSize">
+          <input type="radio" name="radioSize" value="large">large
+        </label>
+      </fieldset>
+      <fieldset>
+        <legend>Color</legend>
+        <label for="radioColor">
+          <input type="radio" checked="checked" name="radioColor" value="red">red
+        </label>
+        <label for="radioColor">
+          <input type="radio" name="radioColor" value="yellow">yellow
+        </label>
+        <label for="radioColor">
+          <input type="radio" name="radioColor" value="blue">blue
+        </label>
+      </fieldset>
+
+
+      <button type="submit" name="button">submit the form</button>
     </form>
 
     <div class="query-params">
