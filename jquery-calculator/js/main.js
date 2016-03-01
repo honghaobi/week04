@@ -1,6 +1,4 @@
 $(document).ready(function() {
-   var operator = ["+","-","*","/"];
-
    var outputString = '';
    var $span = $('span');
    var $screen = $('#screen');
@@ -10,9 +8,16 @@ $(document).ready(function() {
        var value = this.innerText;
        var lastValue = outputString[outputString.length - 1];
        var thisOperator = $(this).hasClass('operator');
+
        if (thisOperator && lastValue === "*" || thisOperator && lastValue === "/" || thisOperator && lastValue === "+" ||thisOperator && lastValue === "-"){
          return;
-       } else if (value !== 'C' && this.id !== 'calc') {
+       } else if(value === "x") {
+         outputString += "*";
+         printResult();
+       } else if(value === "\u00f7") {
+         outputString += "/";
+         printResult();
+       }if (value !== 'C' && value !== "x" && value !== "\u00f7" && this.id !== 'calc') {
          outputString += value;
          printResult();
        } else if (value === 'C'){
