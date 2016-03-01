@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Demo</title>
+    <style>
+      a.bold {
+          font-weight: bold;
+      }
+      a.green {
+          color: green;
+      }
+</style>
+</head>
+<body>
+
+
+  <a class="green" id="jquery" href="http://jquery.com/">jquery</a>
+  <a class="green" id="google" href="http://google.com/">google</a>
+  <a class="green" id="apple" href="http://apple.com/">apple</a>
+
+  <table>
+    <thead>
+      <tr>
+        <th>
+          Link
+        </th>
+        <th>
+          Count
+        </th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>
+          jquery
+        </td>
+        <td id="jqueryClick">
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          google
+        </td>
+        <td id="googleClick">
+          0
+        </td>
+      </tr>
+      <tr>
+        <td>
+          apple
+        </td>
+        <td id="appleClick">
+          0
+        </td>
+      </tr>
+    </tbody>
+  </table>
+
+  <div id="victory">
+
+  </div>
+
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0-beta1/jquery.js"></script>
+  <script>
+    (function(){
+      $(document).ready(function(){
+        $("a").on("click", function(e){
+          e.preventDefault();
+          var $this = $(this);
+
+          $this.removeClass("green");
+          $this.addClass("bold");
+
+          // if ($this.attr("id") === "jquery"){
+          //   var $jCount = $("#jqueryClick");
+          //   var count = parseInt($jCount.text());
+          //   count += 1;
+          //   $jCount.text(count);
+          // } else if ($this.attr("id") === "google"){
+          //   var $gCount = $("#googleClick");
+          //   var count = parseInt($gCount.text());
+          //   count += 1;
+          //   $gCount.text(count);
+          // } else if ($this.attr("id") === "apple"){
+          //   var $aCount = $("#appleClick");
+          //   var count = parseInt($aCount.text());
+          //   count += 1;
+          //   $aCount.text(count);
+          // }
+
+          var id = $this.attr("id");
+          var $click = $('#' + id + 'Click');
+          var content = $click.text();
+          var count = parseInt(content);
+
+          count += 1;
+
+          $click.text(count);
+
+          if (count === 5) {
+            var $p = $('<p>');
+            $p.text("the winner is " + id);
+            $('#victory').append($p);
+          }
+
+
+        })
+      })
+    })();
+  </script>
+</body>
+</html>
