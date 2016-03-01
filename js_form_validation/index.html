@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>js form validation</title>
+  </head>
+  <body>
+    <form>
+      <label>Name (required)
+        <input type="text" name="name" tabindex="1" id="name">
+      </label>
+      <br />
+
+      <label>Email (required)
+        <input type="email" name="email" tabindex="2">
+      </label>
+      <br />
+
+      <label>Age (required, must be older than 13)
+        <input type="text" name="age" tabindex="3" min=13>
+      </label>
+      <br />
+
+      <label>Number of siblings
+        <input type="number" name="siblings" tabindex="4">
+      </label>
+      <br />
+
+      <label>Number of rooms in your house
+        <input type="number" name="rooms" tabindex="5">
+      </label>
+      <br />
+
+      <label>Blog url
+        <input type="text" name="blog" tabindex="6">
+      </label>
+      <br />
+
+      <label>Twitter Username
+        <input type="text" name="twitter" tabindex="7">
+      </label>
+      <br />
+
+      <input type="submit" tabindex="8">
+    </form>
+    <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
+    <script type="text/javascript">
+      $(document).ready(function() {
+        var name = $('#name').val();
+
+        $('form').on('submit', function(event) {
+          console.log('trigglered');
+          if (!$('#name').val()) {
+            var errDiv = $('<div class="error">Please fix yo name!</div>')
+            $("form").prepend(errDiv);
+
+            console.log("please enter a valid name");
+            return false;
+          }
+        });
+
+        $('#name').on('blur', function(event) {
+          if (!$('#name').val()) {
+            console.log("please enter a valid name");
+            $('#name').focus();
+          }
+        });
+
+      });
+    </script>
+  </body>
+</html>
