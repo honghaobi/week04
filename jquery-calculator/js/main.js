@@ -1,4 +1,5 @@
 $(document).ready(function() {
+   var operator = ["+","-","*","/"];
 
    var outputString = '';
    var $span = $('span');
@@ -7,8 +8,11 @@ $(document).ready(function() {
    var calculation = function (){
      $span.on('click', function(event) {
        var value = this.innerText;
-      // ($(this).hasClass('operator') && outputArray[outputArray.length - 1] !== value)
-       if (value !== 'C' && this.id !== 'calc') {
+       var lastValue = outputString[outputString.length - 1];
+       var thisOperator = $(this).hasClass('operator');
+       if (thisOperator && lastValue === "*" || thisOperator && lastValue === "/" || thisOperator && lastValue === "+" ||thisOperator && lastValue === "-"){
+         return;
+       } else if (value !== 'C' && this.id !== 'calc') {
          outputString += value;
          printResult();
        } else if (value === 'C'){
