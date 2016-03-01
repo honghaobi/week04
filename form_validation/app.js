@@ -4,7 +4,7 @@ $(document).ready(function() {
 
   $('form').on('submit', function(event) {
     event.preventDefault();
-    
+
     if ($('input[id = large]:checked').length > 0) {
       cost += 20;
     } else if ($('input[id = medium]:checked').length > 0) {
@@ -14,11 +14,11 @@ $(document).ready(function() {
     }
 
     if ($('input[name = toppings]:checked').length > 0) {
-      cost = cost + ($('input[name = toppings]:checked').length)*0.75;
+      cost = cost + ($('input[name = toppings]:checked').length) * 0.75;
     }
 
     if ($('input[name = toppingsPlus]:checked').length > 0) {
-      cost = cost + ($('input[name = toppingsPlus]:checked').length)*1.25;
+      cost = cost + ($('input[name = toppingsPlus]:checked').length) * 1.25;
     }
 
     if ($('input[id = sauces3]:checked').length > 0) {
@@ -46,7 +46,14 @@ $(document).ready(function() {
       return false;
     }
 
-    $('.bill').append("$" + cost);
+    var tax = cost * 0.08;
+    var tip = cost * 0.15;
+    var total = cost + tax + tip;
+
+    $('.cost').append("$" + cost);
+    $('.tax').append("$" + tax);
+    $('.tip').append("$" + tip);
+    $('.total').append("$" + total);
 
   });
 
