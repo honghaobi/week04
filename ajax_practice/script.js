@@ -62,16 +62,18 @@ $.ajax({
 
 //Promises are an alternate way to use callbacks to handle asychronous requests. Promises can often be used to write cleaner code, especially when one http request relies on the results from another. Promises are a complex topic that deserves it's own complete Learning Experience, but it's easy enough to get started. The following code does the same thing we've been doing with AJAX: make a request to the OMDB API and handle success and failure separately.
 
-// $.ajax({
-//   method: "GET",
-//   url: "http://omdbapi.com/?i=tt1392190"
-// })
-// .done(function(info) {
-//     console.log("Promises --- DONE");
-//     console.log(info);
-//   //write all my code that relies on the response data
-//  })
-// .fail(function(err){
-//   console.log("FAIL");
-//   console.log(err);
-// });
+var xhrPromise = $.ajax({
+  method: "GET",
+  url: "http://omdbapi.com/?i=tt1392190"
+});
+
+xhrPromise.done(function(info) {
+    console.log("Promises --- DONE");
+    console.log(info);
+  //write all my code that relies on the response data
+});
+
+xhrPromise.fail(function(err){
+  console.log("FAIL");
+  console.log(err);
+});
