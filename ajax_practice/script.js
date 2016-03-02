@@ -1,3 +1,5 @@
+//Below is an example of an AJAX call in pure JS. It is verbose and somewhat error prone. Try pasting this into your console, and examining the content of the alert box.
+
 // var httpRequest = new XMLHttpRequest();
 // httpRequest.onreadystatechange = function(){
 //     if (httpRequest.readyState === 4) {
@@ -23,6 +25,15 @@ $.ajax({
     console.log('movie title = ' + data.Title);
     console.log('status number = ' + xhr.status);
     console.log('status text = ' + statusText);
+    $.ajax({
+      url: 'https://www.omdbapi.com/?t=Superman&y=&plot=short&r=json',
+      method: "GET",
+      dataType: 'json',
+      success: function(data, statusText, xhr) {
+        console.log('movie title = ' + data.Title);
+        console.log("another ajaxCall");
+      }
+    });
   },
   error: function(jqHXR) {
   console.log("ERROR: ", jqHXR.status);
