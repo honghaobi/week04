@@ -1,4 +1,79 @@
+
+.header{
+  color:white;
+  background-color:rgba(255, 0, 0, 0.5);
+  position: fixed;
+  width: 100%;
+  padding-left: 30px;
+  padding-top: 15px;
+  margin: 0px;
+  top:0px;
+}
+
+.footer{
+  color: white;
+  background-color:rgba(155, 20, 155, 0.5);
+  position: fixed;
+  width: 100%;
+  bottom: 0px;
+  margin: 0px;
+  text-align: center;
+}
+
+.tagLine{
+  width: 500px;
+  position: absolute;
+  margin: 0 auto;
+  left: 50%;
+  margin-left: -180px;
+  top: 250px;
+  z-index: 2;
+  color: white;
+}
+
+.placeOrder{
+  width: 600px;
+  position: absolute;
+  margin: 0 auto;
+  left: 50%;
+  margin-left: -280px;
+  top: 500px;
+  z-index: 2;
+  color: white;
+  background-color: green;
+  text-align: center;
+  padding-top: 10px;
+
+}
+
+.coverPhoto{
+  width: 100%;
+}
+
+.dContainter{
+  margin-top: 50px;
+}
+
+.dTitle{
+  text-align: center;
+  padding: 5px;
+  margin-bottom: 40px;
+}
+
+.dText{
+  padding: 10px;
+  text-align: justify;
+}
+
 .orderList{
   height: 400px;
   background-color: yellow;
+}
+
+small{
+  text-align: right;
+}
+
+.menu{
+  margin-top: 100px;
 }
