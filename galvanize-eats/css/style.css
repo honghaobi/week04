@@ -7,7 +7,8 @@
   padding-left: 30px;
   padding-top: 15px;
   margin: 0px;
-  top:0px;
+  top: 0px;
+  z-index: 2;
 }
 
 .footer{
@@ -18,6 +19,7 @@
   bottom: 0px;
   margin: 0px;
   text-align: center;
+  z-index: 2;
 }
 
 .tagLine{
@@ -66,8 +68,10 @@
 }
 
 .orderList{
+  border-radius: 20px;
+  padding: 15px;
   height: 400px;
-  background-color: yellow;
+  background-color: rgba(0, 255, 0, 0.5);
 }
 
 small{
@@ -76,4 +80,64 @@ small{
 
 .menu{
   margin-top: 100px;
+}
+
+.menuBurger{
+  background-color: rgba(255, 90, 0, 0.5);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.menuPizza{
+  background-color: rgba(255, 90, 0, 0.5);
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.personInfo{
+  background-color: rgba(255, 255, 0, 0.5);
+  position: absolute;
+  width: 430px;
+  top: 650px;
+  left: 30px;
+  padding: 20px;
+  border-radius: 20px;
+}
+
+.orderList{
+  padding: 15px;
+}
+
+.finishOrder{
+  display: none;
+  z-index: 10;
+  background-color: rgba(75, 0, 255, 0.9);
+  color: white;
+  position: fixed;
+  height: 150px;
+  border-radius: 40px;
+  width: 600px;
+  top: 200px;
+  left: 25%;
+  right: 25%;
+  padding: 5%;
+  text-align: center;
+}
+
+.totalContainer{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  border-radius: 20px;
+  padding: 15px;
+  background-color: rgba(0, 255, 255, 0.9);
+}
+
+button{
+  width: 60%;
+  background-color: rgba(255, 255, 0, 0.5);
+}
+
+#orderSubmit{
+  width: 100%;
+  background-color: rgba(0, 255, 0, 0.5);
 }

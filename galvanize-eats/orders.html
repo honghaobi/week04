@@ -29,23 +29,46 @@
         <div class="five columns">
           <div class="orderCart">
             <div class="orderList">
+              <div class="orderList1"></div>
+              <div class="orderList2"></div>
+              <div class="orderList3"></div>
+              <div class="orderList4"></div>
+              <div class="orderList5"></div>
             </div>
-            <div>
-              <h6 class="subtotal">Subtotal: $0.00</h6>
-            </div>
-            <div>
-              <h6 class="tax">Tax: $0.00</h6>
-            </div>
-            <div>
-              <h5 class="grandtotal">Grand Total: $0.00</h5>
+            <div class="totalContainer">
+              <div>
+                <h6 class="subtotal">Subtotal: $0.00</h6>
+              </div>
+              <div>
+                <h6 class="tax">Tax: $0.00</h6>
+              </div>
+              <div>
+                <h5 class="grandtotal">Grand Total: $0.00</h5>
+              </div>
             </div>
             <button id="orderSubmit" type="button" name="button">ORDER</button>
           </div>
         </div>
+        <div class="personInfo">
+            <label for="name">Name:
+              <input type="text" name="name" id="name" class="required">
+            </label>
+            <label for="phone">Phone:
+              <input type="text" name="phone" id="phone" class="required">
+            </label>
+            <label for="email">Email:
+              <input name="email" type="email" id="email" size="38" class="required">
+            </label>
+            <label for="address">Address:
+              <input name="address" type="text" id="address" size="36" class="required">
+            </label>
+        </div>
       </div>
     </div>
-
-  <a href="index.html">home page</a>
+    <div class="finishOrder">
+      <h2>You have submited your Order!</h2>
+      <h4>We will deliver your food to you ASAP!!</h4>
+    </div>
   <script src="//code.jquery.com/jquery-1.12.0.min.js"></script>
   <script src="app.js" type="text/javascript"></script>
   </body>
