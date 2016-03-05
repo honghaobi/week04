@@ -81,7 +81,6 @@ function getAlbumsAndTracks(event){
       spotifyQueryString = albumID;
       searchUrl = "https://api.spotify.com/v1/albums/" + spotifyQueryString;
 
-      // Generate the request object
       spotifyQueryRequest = $.ajax({
           type: "GET",
           dataType: 'json',
@@ -104,7 +103,6 @@ function getAlbumsAndTracks(event){
       spotifyQueryString = trackID;
       searchUrl = "https://api.spotify.com/v1/tracks/" + spotifyQueryString;
 
-      // Generate the request object
       spotifyQueryRequest = $.ajax({
           type: "GET",
           dataType: 'json',
