@@ -16,3 +16,14 @@ h1, h2, h3{
 	cursor: pointer;
 	text-decoration: underline;
 }
+
+img{
+	width: 200px;
+}
+
+
+.album{
+	font-size: 20px;
+	color: orange;
+	background-color: blue;
+}

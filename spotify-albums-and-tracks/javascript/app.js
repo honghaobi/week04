@@ -1,15 +1,12 @@
 // Self envoking function! once the document is ready, bootstrap our application.
-// We do this to make sure that all the HTML is rendered before we do things 
-// like attach event listeners and any dom manipulation.  
+// We do this to make sure that all the HTML is rendered before we do things
+// like attach event listeners and any dom manipulation.
 (function(){
   $(document).ready(function(){
     bootstrapSpotifySearch();
-  })
+  });
 })();
 
-/**
-  This function bootstraps the spotify request functionality.
-*/
 function bootstrapSpotifySearch(){
 
   var userInput, searchUrl, results;
@@ -20,6 +17,70 @@ function bootstrapSpotifySearch(){
       spotifyQueryString = $('#spotify-q').val();
       searchUrl = "https://api.spotify.com/v1/search?type=artist&q=" + spotifyQueryString;
 
+      spotifyQueryRequest = $.ajax({
+          type: "GET",
+          dataType: 'json',
+          url: searchUrl
+      });
+
+      spotifyQueryRequest.done(function (data) {
+        var artists = data.artists;
+
+        outputArea.html('');
+
+        artists.items.forEach(function(artist){
+          var artistLi = $("<li class='artist'>" + artist.name + " - " + artist.id + "</li>");
+          artistLi.attr('data-spotify-id', artist.id);
+          outputArea.append(artistLi);
+
+          artistLi.click(displayAlbumsAndTracks);
+
+        });
+      });
+
+      spotifyQueryRequest.fail(function (error) {
+        console.log("Something Failed During Spotify Q Request:");
+        console.log(error);
+      });
+  });
+}
+
+function displayAlbumsAndTracks(event) {
+  var appendToMe = $('#albums-and-tracks');
+  getAlbumsAndTracks(event);
+}
+
+function getAlbumsAndTracks(event){
+  var spotifyQueryRequest;
+  spotifyQueryString = $(event.target).attr('data-spotify-id');
+  searchUrl = "https://api.spotify.com/v1/artists/" + spotifyQueryString + "/albums";
+
+  spotifyQueryRequest = $.ajax({
+      type: "GET",
+      dataType: 'json',
+      url: searchUrl
+  });
+
+
+  spotifyQueryRequest.done(function(data){
+
+    var outputArea = $('#albums-and-tracks');
+    // Clear the output area
+    outputArea.html('');
+    var albumsLi;
+    for (var i = 0; i < data.items.length; i++) {
+      albumsLi = $("<img src='" + data.items[i].images[0].url + "' />" + "<li class='album'>" + data.items[i].name + " - " + data.items[i].id + "</li>" + "<div id='"+ data.items[i].id + "'></div>");
+      albumsLi.attr('data-spotify-Albumid', data.items[i].id);
+      getTracks(data.items[i].id);
+      outputArea.append(albumsLi);
+    }
+
+
+    function getTracks(albumID){
+      var spotifyQueryRequest;
+      spotifyQueryString = albumID;
+      searchUrl = "https://api.spotify.com/v1/albums/" + spotifyQueryString;
+
       // Generate the request object
       spotifyQueryRequest = $.ajax({
           type: "GET",
@@ -27,43 +88,39 @@ function bootstrapSpotifySearch(){
           url: searchUrl
       });
 
-      // Attach the callback for success 
-      // (We could have used the success callback directly)
-      spotifyQueryRequest.done(function (data) {
-        var artists = data.artists;
+      spotifyQueryRequest.done(function(data){
+        var outputArea = "#" + albumID;
 
-        // Clear the output area
-        outputArea.html('');
+        for (var i = 0; i < data.tracks.items.length; i++) {
+          var tracksLi = $("<li>" + data.tracks.items[i].name + "</li>" + "<div id='"+ data.tracks.items[i].id + "'></div>");
+          getTrackInfo(data.tracks.items[i].id);
+          $(outputArea).append(tracksLi);
+        }
+      });
+    }
 
-        // The spotify API sends back an arrat 'items' 
-        // Which contains the first 20 matching elements.
-        // In our case they are artists.
-        artists.items.forEach(function(artist){
-          var artistLi = $("<li>" + artist.name + " - " + artist.id + "</li>")
-          artistLi.attr('data-spotify-id', artist.id);
-          outputArea.append(artistLi);
+    function getTrackInfo(trackID){
+      var spotifyQueryRequest;
+      spotifyQueryString = trackID;
+      searchUrl = "https://api.spotify.com/v1/tracks/" + spotifyQueryString;
 
-          artistLi.click(displayAlbumsAndTracks);
-        })
+      // Generate the request object
+      spotifyQueryRequest = $.ajax({
+          type: "GET",
+          dataType: 'json',
+          url: searchUrl
       });
 
-      // Attach the callback for failure 
-      // (Again, we could have used the error callback direcetly)
-      spotifyQueryRequest.fail(function (error) {
-        console.log("Something Failed During Spotify Q Request:")
-        console.log(error);
+      spotifyQueryRequest.done(function(data){
+        var outputArea = "#" + trackID;
+        var popRating ="popularRating ----> " + data.popularity;
+        $(outputArea).append(popRating);
       });
+    }
   });
 }
 
-/* COMPLETE THIS FUNCTION! */
-function displayAlbumsAndTracks(event) {
-  var appendToMe = $('#albums-and-tracks');
 
-  // These two lines can be deleted. They're mostly for show. 
-  console.log("you clicked on:");
-  console.log($(event.target).attr('data-spotify-id'));//.attr('data-spotify-id'));
-}
 
 /* YOU MAY WANT TO CREATE HELPER FUNCTIONS OF YOUR OWN */
 /* THEN CALL THEM OR REFERENCE THEM FROM displayAlbumsAndTracks */
